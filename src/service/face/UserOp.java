@@ -1,6 +1,6 @@
 package service.face;
 
-import domain.User;
+import domain.*;
 
 /**
  * User Operation 
