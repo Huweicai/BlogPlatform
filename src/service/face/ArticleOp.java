@@ -38,4 +38,9 @@ public interface ArticleOp {
 	 */
 	public void deleteArticle(String userID, int articleID);
 	
+	/**
+	 * 给文章点一颗星，文章star数+1
+	 * @param articleID 文章ID
+	 */
+	public void star(int articleID);
 }

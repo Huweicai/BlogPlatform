@@ -1,4 +1,4 @@
-//Hello
+//我自横刀向天笑
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
