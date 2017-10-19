@@ -1,4 +1,3 @@
-//我自横刀向天笑
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -25,6 +24,7 @@ public class Test {
 		UserSql uo=session.getMapper(UserSql.class);
 		User a=uo.getNumOfIDAndPas("1111","111");
 		System.out.println(a);
+		
 		UserOp userOp=new UserServiceImpl();
 		//User user2=userOp.canLogin("1111", "111");
 		//System.out.println(user2.getBirth_day());

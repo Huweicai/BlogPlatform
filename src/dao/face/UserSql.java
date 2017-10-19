@@ -8,10 +8,11 @@ public interface UserSql {
 	/**
 	 * 获取表中email对应的行数
 	 * @param email
-	 * @return User类
+	 * @return User类 
 	 */
 	@Select("select count(*) from user where email=#{email}")
 	public int getNumByEmail(String email);
+	
 	/**
 	 * 通过ID获取用户信息
 	 * @param userID
@@ -35,7 +36,7 @@ public interface UserSql {
 	 * @return 理论上应该只有0 或者 1
 	 */
 	@Select("select * from user where userID=#{userID} and password=#{password}")
-	public User getNumOfIDAndPas(String userID, String password);
+	public int getNumOfIDAndPas(@Param("userID")String userID, @Param("password")String password);
 	
 	/**
 	 * 往user表添加一行
