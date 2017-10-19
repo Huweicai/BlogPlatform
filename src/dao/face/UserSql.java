@@ -28,7 +28,7 @@ public interface UserSql {
 	 * @return 理论上应该只有0 或者 1
 	 */
 	@Select("select count(*) from user where userID=#{userID} and password=#{password}")
-	public int getNumOfIDAndPas(String userID, String password);
+	public int getNumOfIDAndPas(@Param("userID")String userID, @Param("password")String password);
 	
 	/**
 	 * 往user表添加一行
