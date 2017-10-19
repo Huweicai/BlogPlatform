@@ -16,7 +16,7 @@ import domain.User;
  */
 public class Test {
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception{
 		String res="configuration/mybatis_conf.xml";
 		SqlSessionFactory fac=new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream(res));
 		fac.getConfiguration().addMapper(UserSql.class);
@@ -24,7 +24,7 @@ public class Test {
 		UserSql uo=session.getMapper(UserSql.class);
 		User a=uo.getNumOfIDAndPas("1111","111");
 		System.out.println(a);
-		
+		 
 		UserOp userOp=new UserServiceImpl();
 		//User user2=userOp.canLogin("1111", "111");
 		//System.out.println(user2.getBirth_day());
