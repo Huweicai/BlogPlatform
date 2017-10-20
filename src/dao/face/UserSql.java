@@ -51,6 +51,7 @@ public interface UserSql {
 			+ "set birth_day=#{birth_day},"
 			+ "set self_introduce=#{self_introduce},"
 			+ "set isAdmin=#{isAdmin},"
-			+ "set color=#{color}")
+			+ "set color=#{color}"
+			+ "where userID=#{userID}")
 	public void updateUser(User user);
 }
