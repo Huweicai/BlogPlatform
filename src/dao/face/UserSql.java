@@ -32,10 +32,10 @@ public interface UserSql {
 	 * 获取表中与指定用户名及密码对应行的数量
 	 * @param userID336
 	 * @param password
-	 * @return 理论上应该只有0 或者 1
+	 * @return 如果登录成功则返回用户实体，否则为空
 	 */
 	@Select("select * from user where userID=#{userID} and password=#{password}")
-	public User getNumOfIDAndPas(String userID, String password);
+	public User getNumOfIDAndPas(@Param("userID")String userID,@Param("password") String password);
 	
 	/**
 	 * 往user表添加一行
