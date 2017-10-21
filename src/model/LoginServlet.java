@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import domain.User;
 import service.face.UserOp;
-import service.impl.UserServiceImpl;
+import service.impl.UserOpImpl;
 
 public class LoginServlet extends HttpServlet {
 
@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
 			isCheckCode=true;
 		}
 		//进行用户名和密码的比对
-		UserOp userOp=new UserServiceImpl();
+		UserOp userOp=new UserOpImpl();
 		User loginUser=new User();
 		try {
 			loginUser=userOp.canLogin(username, password);

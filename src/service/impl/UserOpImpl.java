@@ -5,7 +5,7 @@ import domain.User;
 import service.face.UserOp;
 import utils.GetSqlResultUtils;
 
-public class UserServiceImpl implements UserOp {
+public class UserOpImpl implements UserOp {
 	/**
 	 * 判断用户Id和密码是否正确
 	 * @throws Exception 

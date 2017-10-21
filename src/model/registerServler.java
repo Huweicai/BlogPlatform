@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.beanutils.BeanUtils;
 
 import service.face.UserOp;
-import service.impl.UserServiceImpl;
+import service.impl.UserOpImpl;
 import domain.User;
 
 
@@ -57,7 +57,7 @@ public class registerServler extends HttpServlet {
 		user.setBirth_year(null);
 		user.setColor(null);
 		user.setSelf_introduce(null);
-		UserOp userOp=new UserServiceImpl();
+		UserOp userOp=new UserOpImpl();
 		try {
 			userOp.addUser(user);
 		} catch (Exception e) {

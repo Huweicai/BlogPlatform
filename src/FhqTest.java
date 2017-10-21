@@ -4,7 +4,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import service.face.UserOp;
-import service.impl.UserServiceImpl;
+import service.impl.UserOpImpl;
 import dao.face.UserSql;
 import domain.User;
 
@@ -26,7 +26,7 @@ public class FhqTest {
 		User a=uo.getNumOfIDAndPas("1111","111");
 		System.out.println(a);
 		 
-		UserOp userOp=new UserServiceImpl();
+		UserOp userOp=new UserOpImpl();
 		//User user2=userOp.canLogin("1111", "111");
 		//System.out.println(user2.getBirth_day());
 		boolean isUserNameExist=userOp.isUserIDAvailable("1111");

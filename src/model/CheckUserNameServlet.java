@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import service.face.UserOp;
-import service.impl.UserServiceImpl;
+import service.impl.UserOpImpl;
 
 public class CheckUserNameServlet extends HttpServlet {
 
@@ -19,7 +19,7 @@ public class CheckUserNameServlet extends HttpServlet {
 			String userName=request.getParameter("username");
 			System.out.println(userName);
 			//将username传递到service层
-			UserOp userOp=new UserServiceImpl();
+			UserOp userOp=new UserOpImpl();
 			boolean isExist=false;
 			try {
 				isExist=userOp.isUserIDAvailable(userName);

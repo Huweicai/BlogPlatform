@@ -8,6 +8,11 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import dao.face.UserSql;
 import domain.User;
 
+/**
+ * 临时Test类用于提供简单的单元测试功能
+ * 可以运行一个小模块的代码判断正确性
+ * @author 胡炜财
+ */
 public class HwcTest {
 
 	public static void main(String[] args) throws IOException {

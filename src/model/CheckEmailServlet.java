@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import service.face.UserOp;
-import service.impl.UserServiceImpl;
+import service.impl.UserOpImpl;
 
 public class CheckEmailServlet extends HttpServlet {
 
@@ -19,7 +19,7 @@ public class CheckEmailServlet extends HttpServlet {
 		String email=request.getParameter("email");
 		System.out.println(email);
 		//将username传递到service层
-		UserOp userOp=new UserServiceImpl();
+		UserOp userOp=new UserOpImpl();
 		boolean isExist=false;
 		try {
 			isExist=userOp.isUserEmailAvailable(email);
