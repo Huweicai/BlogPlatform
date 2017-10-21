@@ -26,12 +26,19 @@ public class UserServiceImpl implements UserOp {
 		int isExist=userSql.getNumOfID(userID);
 		return isExist>0?true:false;
 		}
-
+	/**
+	 * 添加用户
+	 * @throws Exception 
+	 */
 	@Override
-	public void addUser(User user) {
-		// TODO Auto-generated method stub
-
+	public void addUser(User user) throws Exception {
+		GetSqlResultUtils getSqlResult=new GetSqlResultUtils();
+		UserSql userSql=getSqlResult.getUserSql();
+		userSql.insertUser(user);
 	}
+	/**
+	 * 判断用户邮箱是否存在
+	 */
 	@Override
 	public boolean isUserEmailAvailable(String eamil) throws Exception {
 		GetSqlResultUtils getSqlResult=new GetSqlResultUtils();

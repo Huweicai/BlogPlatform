@@ -12,9 +12,9 @@ public class User {
 	private String email;
 	private String password;
 	private String sex;
-	private int birth_year;
-	private int birth_month;
-	private int birth_day;
+	private String birth_year;
+	private String birth_month;
+	private String birth_day;
 	private String self_introduce;
 	private boolean isAdmin;
 	private String color;
@@ -48,22 +48,22 @@ public class User {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-	public int getBirth_year() {
+	public String getBirth_year() {
 		return birth_year;
 	}
-	public void setBirth_year(int birth_year) {
+	public void setBirth_year(String birth_year) {
 		this.birth_year = birth_year;
 	}
-	public int getBirth_month() {
+	public String getBirth_month() {
 		return birth_month;
 	}
-	public void setBirth_month(int birth_month) {
+	public void setBirth_month(String birth_month) {
 		this.birth_month = birth_month;
 	}
-	public int getBirth_day() {
+	public String getBirth_day() {
 		return birth_day;
 	}
-	public void setBirth_day(int birth_day) {
+	public void setBirth_day(String birth_day) {
 		this.birth_day = birth_day;
 	}
 	public String getSelf_introduce() {

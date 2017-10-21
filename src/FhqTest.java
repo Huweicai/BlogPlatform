@@ -14,7 +14,7 @@ import domain.User;
  * @author 胡炜财
  *
  */
-public class Test {
+public class FhqTest {
 
 	public static void main(String[] args) throws Exception{
 		String res="configuration/mybatis_conf.xml";

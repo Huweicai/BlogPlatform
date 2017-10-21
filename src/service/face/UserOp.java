@@ -33,7 +33,8 @@ public interface UserOp {
 	/**
 	 * 添加新用户
 	 * @return
+	 * @throws Exception 
 	 */
-	public void addUser(User user);
+	public void addUser(User user) throws Exception;
 	
 }
