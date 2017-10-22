@@ -19,17 +19,18 @@ public class HwcTest {
 		String res="configuration/mybatis_conf.xml";
 		SqlSessionFactory fac=new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream(res));
 		fac.getConfiguration().addMapper(UserSql.class);
-		SqlSession session = fac.openSession();
+		SqlSession session = fac.openSession(true);
 		UserSql uo = session.getMapper(UserSql.class);
 		User u = new User();
-		u.setUserID("aaaaa");
-		u.setUsername("红花红");
+		u.setUserID("0");
+		u.setUsername("我自横刀向天笑");
 		u.setPassword("123");
+		u.setEmail("1792663772@qq.com");
 		uo.insertUser(u);
-		System.out.println(uo.getUserByID("aaaaa"));
+		System.out.println(uo.getUserByID("0"));
 		System.out.println();
 		//再提交完之后不要忘了commit
-		session.commit();
+//		session.commit();
 	}
 
 }

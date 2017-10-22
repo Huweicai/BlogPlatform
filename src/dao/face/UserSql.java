@@ -21,6 +21,13 @@ public interface UserSql {
 	public User getUserByID(String userID);
 	
 	/**
+	 * 
+	 * @param email
+	 * @return
+	 */
+	@Select("select * from user where email=#{eamil}")
+	public User getUserByEmail(@Param("eamil")String email);
+	/**
 	 * 获取表中与用户ID对应的行数
 	 * @param username
 	 * @return 行数
