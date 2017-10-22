@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import service.face.UserOp;
 import service.impl.UserOpImpl;
+import utils.Const;
 
 /**
  * 确认邮箱，用于找回密码及注册时 验证邮箱时会向指定邮箱发送一个包含随机验证码参数的链接，
@@ -33,7 +34,8 @@ public class ForgetPasswordServlet extends HttpServlet {
 	// 给指定邮箱发送验证码
 	public void sendKey(String email) throws Exception {
 		int key = (int) (1000000000 * Math.random());
-		UserOp userop = new UserOpImpl();
+		//通过Spring获取实例
+		UserOp userop = (UserOp) Const.context.getBean("userop");
 		//获取用户ID
 		String userID = userop.getIDByEamil(email);
 		content = "尊敬的用户 "+ userID + ",您好 ！"+ enter +content;
