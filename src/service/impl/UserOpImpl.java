@@ -56,5 +56,17 @@ public class UserOpImpl implements UserOp {
 		String userID = getUserByEmail(email).getUserID();
 		return userID;
 	}
+	/**
+	 * 通过用户名和邮箱判断用户是否存在
+	 * @throws Exception 
+	 */
+	@Override
+	public boolean isUserByEmailAndUsername(String username, String eamil) throws Exception {
+		GetSqlResultUtils getSqlResult = new GetSqlResultUtils();
+		UserSql userSql = getSqlResult.getUserSql();
+		int isExist = userSql.getNumByUsernameAndEmail(username,eamil);
+		System.out.println(isExist);
+		return isExist > 0 ? true : false;
+	}
 
 }

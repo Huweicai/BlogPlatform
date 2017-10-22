@@ -46,6 +46,9 @@ body {
 				right:20px;
 				position:absolute;
 }
+.warning{
+	color:red;
+}
 </style>
 <script type="text/javascript">
 	$(function(){
@@ -55,16 +58,108 @@ body {
 		$("#reNewPassword").focus(function(){
 			$(this).attr('placeholder','请重新输入新密码');
 		});
+		$("#newPassword").keypress(function(){
+			$("#newPasswordInfo").html("");
+		});
+		$("#reNewPassword").keypress(function(){
+			$("#reNewPasswordInfo").html("");
+		});
 		$("#reSetPasswordButton").click(function(){
 			var newPassword=$("#newPassword").val();
 			var reNewPassword=$("#reNewPassword").val();
 			var newPasswordInfo="";
 			var reNewPasswordInfo="";
+			var newpasswordFlag=false;
 			if(newPassword==""){
 				newPasswordInfo="密码不能为空";
 				$("#newPasswordInfo").html("");
 				$("#newPasswordInfo").addClass("warning");
 				$("#newPasswordInfo").html(newPasswordInfo);
+			}else{
+				//对用户名格式进行校验
+				var num=0;
+				var number=0;
+				var letter=0;
+				var bigLetter=0;
+				var chars=0;
+				if(newPassword.search(/[0-9]/) != -1){
+					num+=1;
+					number=1;
+				}
+				if(newPassword.search(/[A-Z]/) != -1){
+					num+=1;
+					bigLetter=1;
+				}
+				if(newPassword.search(/[a-z]/) != -1){
+					num+=1;
+					letter=1;
+				}
+				if(newPassword.search(/[^A-Za-z0-9]/) != -1){
+					num+=1;
+					letter
+				}
+				if(num>=2&&(newPassword.length>=6&&newPassword.length<=16)){
+					newPasswordInfo="";
+					$("#newPasswordInfo").html("")
+					$("#newPasswordInfo").addClass("success");
+					$("#newPasswordInfo").html(newPasswordInfo);
+					newpasswordFlag=true;
+				}else if(newPassword.length<6){
+					newPasswordInfo="用户名至少 6位";
+					$("#newPasswordInfo").html("")
+					
+					$("#newPasswordInfo").addClass("warning");
+					$("#newPasswordInfo").html(newPasswordInfo);			
+				}else if(newPassword.length>16){
+					newPasswordInfo="用户名最多16位";
+					$("#newPasswordInfo").html("")
+					$("#newPasswordInfo").addClass("warning");
+					$("#newPasswordInfo").html(newPasswordInfo);
+				}else if(num==1){
+					if(number==1){
+						newPasswordInfo="不能全为数字";
+						$("#newPasswordInfo").html("")
+						$("#newPasswordInfo").addClass("warning");
+						$("#newPasswordInfo").html(newPasswordInfo);
+					}
+					if(letter==1){
+						newPasswordInfo="不能全为小写字母";
+						$("#newPasswordInfo").html("")
+						$("#newPasswordInfo").addClass("warning");
+						$("#newPasswordInfo").html(newPasswordInfo);
+					}
+					if(bigLetter==1){
+						newPasswordInfo="不能全为大写字母";
+						$("#newPasswordInfo").html("")
+						$("#newPasswordInfo").addClass("warning");
+						$("#newPasswordInfo").html(newPasswordInfo);
+					}if(chars==1){
+						newPasswordInfo="不能全为字符";
+						$("#newPasswordInfo").html("")
+						$("#newPasswordInfo").addClass("warning");
+						$("#newPasswordInfo").html(newPasswordInfo);
+					}
+				}
+			}
+			if(reNewPassword==""){
+				
+				reNewPasswordInfo="确认密码不能为空";
+				$("#reNewPasswordInfo").html("");
+				$("#reNewPasswordInfo").addClass("warning");
+				$("#reNewPasswordInfo").html(reNewPasswordInfo);
+			}else{
+				
+				if(newPassword==reNewPassword&&newpasswordFlag==true){
+					reNewPasswordInfo="";
+					$("#reNewPasswordInfo").html("");
+					$("#reNewPasswordInfo").html(reNewPasswordInfo);
+					$("#reSetPasswordButton").submit();
+				}else{
+					reNewPasswordInfo="两次密码不一致";
+					$("#reNewPasswordInfo").html("");
+					$("#reNewPasswordInfo").addClass("warning");
+					$("#reNewPasswordInfo").html(reNewPasswordInfo);
+				}
 			}
 		});
 	});
@@ -77,7 +172,7 @@ body {
 <body class="yellow" style="width: 500px;">
 	<div id="login-page" class="row">
 		<div class="col s12 z-depth-6 card-panel">
-			<form class="login-form">
+			<form class="login-form" action="${pageContext.request.contextPath }/setpasswordagain.jsp" method="post">
 				<div class="row">
 					<div class="input-field col s12 center">
 						<img src="http://w3lessons.info/logo.png" alt=""

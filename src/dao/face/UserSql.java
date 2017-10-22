@@ -68,4 +68,14 @@ public interface UserSql {
 			+ "set color=#{color}"
 			+ "where userID=#{userID}")
 	public void updateUser(User user);
+	/**
+	 * 通过用户名和邮箱判断用户是否存在
+	 * @param eamil
+	 * @param eamil2 
+	 * @return
+	 * @Select("select * from user where userID=#{userID} and password=#{password}")
+	public User getNumOfIDAndPas(@Param("userID")String userID,@Param("password") String password);
+	 */
+	@Select("select count(*) from user where userID=#{userID} and email=#{email}")
+	public int getNumByUsernameAndEmail(@Param("userID")String userID,@Param("email") String email);
 }

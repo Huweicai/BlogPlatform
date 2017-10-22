@@ -23,7 +23,8 @@ public class FhqTest {
 		
 		SqlSession session=fac.openSession();
 		UserSql uo=session.getMapper(UserSql.class);
-		User a=uo.getNumOfIDAndPas("1111","111");
+		//User a=uo.getNumOfIDAndPas("1111","111");
+		int a=uo.getNumByUsernameAndEmail("1111","tom@qq.com");
 		System.out.println(a);
 		 
 		UserOp userOp=new UserOpImpl();

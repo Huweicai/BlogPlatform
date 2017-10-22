@@ -52,4 +52,12 @@ public interface UserOp {
 	 * @throws Exception
 	 */
 	public String getIDByEamil(String eamil) throws Exception;
+	/**
+	 * 通过用户名和邮箱查找用户是否存在
+	 * @param username
+	 * @param eamil
+	 * @return
+	 * @throws Exception 
+	 */
+	public boolean isUserByEmailAndUsername(String username, String eamil) throws Exception;
 }

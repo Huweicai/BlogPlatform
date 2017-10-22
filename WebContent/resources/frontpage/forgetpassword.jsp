@@ -34,9 +34,10 @@
 			}
 			#emailInfo{
 				height: 30px;
-				maigin-top:-47px;
+				margin-top:-47px !important;
 				right: 20px;
 				position: absolute;
+				
 			}
 			#usernameInfo{
 				height: 30px;
@@ -50,11 +51,18 @@
 		</style>
 		<script type="text/javascript">
 			$(function(){
+				var usernameInputFlag=false;
 				$("#email").focus(function(){
 					$(this).attr('placeholder','请输入邮箱');
 				});
 				$("#username").focus(function(){
 					$(this).attr('placeholder','请输入你需要找回密码的用户名');
+				});
+				$("#email").focus(function(){
+					$("#emailInfo").html("");
+				});
+				$("#username").keypress(function(){
+					$("#usernameInfo").html("");
 				});
 				$("#username").blur(function(){
 					var usernameInput=$(this).val();
@@ -75,30 +83,63 @@
 									$("#usernameInfo").html("");
 									$("#usernameInfo").addClass("warning");
 									$("#usernameInfo").html(usernameInfo);
+								}else{
+									usernameInputFlag=true
 								}
 							},
 							//返回数据的格式
 							"json"
 						)
+					}else{
+						usernameInfo="用户名不能为空";
+						$("#usernameInfo").html("");
+						$("#usernameInfo").addClass("warning");
+						$("#usernameInfo").html(usernameInfo);
 					}
 				});
 				$("#setPasswordAgain").click(function(){
-					var emailInput=$(this).val();
+					var emailInput=$("#email").val();
+					var userNameInput=$("#username").val();
 					var emailInfo="";
-					if(emailInput=""){
+					if(emailInput==""){
 						emailInfo="邮箱不能为空";
 						$("#emailInfo").html("");
-						$("#emailInfo").addCalss("warning");
+						$("#emailInfo").addClass("warning");
 						$("#emailInfo").html(emailInfo);
 						
 					}else{
 						if(!/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/.test(emailInput)){
+							alert(emailInput);
 							emailInfo="邮箱格式不正确";
 							$("#emailInfo").html("");
-							$("#emailInfo").addCalss("warning");
+							$("#emailInfo").addClass("warning");
 							$("#emailInfo").html(emailInfo);
 						}else{
-							
+							if(usernameInputFlag==true){
+								alert(emailInput);
+								$.post(
+									
+										//url地址
+										"${pageContext.request.contextPath}/checkUserNameAndEmail",
+										//传送key-value值
+										{"email":emailInput,"username":userNameInput},
+										//回调函数
+										function(data){
+											var isExist=data.isExist;
+											if(!isExist){
+												emailInfo="不是此用户名绑定的邮箱";
+												$("#emailInfo").html("");
+												$("#emailInfo").addClass("warning");
+												$("#emailInfo").html(emailInfo);
+											}else{
+												$("#setPasswordAgain").submit();
+											}
+										},
+										//返回数据的格式
+										"json"
+									)
+								
+							}
 						}
 					}
 				});
@@ -112,7 +153,7 @@
 	<body class="yellow" style="width:500px;">
 		<div id="login-page" class="row">
 			<div class="col s12 z-depth-6 card-panel">
-				<form class="login-form" id="passwordAgainForm" action="${pageContext.request.contextPath}/findPassword" method="post">
+				<form class="login-form" id="passwordAgainForm" action="${pageContext.request.contextPath}/forgetpassword.jsp" method="post">
 					<div class="row">
 						<div class="input-field col s12 center">
 							<img src="http://w3lessons.info/logo.png" alt="" class="responsive-img valign profile-image-login">
@@ -131,14 +172,15 @@
 							<span id="usernameInfo"></span>
 						</div>
 					</div>
+					
 					<div class="row margin">
 						<div class="input-field col s12">
 							<i class="mdi-communication-email prefix"></i>
 							<input class="validatee" id="email" type="email">
 							<label for="email" data-error="wrong" data-success="right" class="center-align">邮箱</label>
-							<span id="emailInfo"></span>
+							<span id="emailInfo">wseqwe</span>
 						</div>
-					</div>
+					</div> 
 					<div class="row">
 						<div class="input-field col s12">
 							<a id="setPasswordAgain" href="javascript:" class="btn waves-effect waves-light col s12">重置我的密码</a>
