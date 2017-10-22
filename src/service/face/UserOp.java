@@ -37,4 +37,19 @@ public interface UserOp {
 	 */
 	public void addUser(User user) throws Exception;
 	
+	/**
+	 * 通过邮箱获取User实体
+	 * @param email
+	 * @return
+	 * @throws Exception
+	 */
+	public User getUserByEmail(String email) throws Exception;
+	
+	/**
+	 * 通过邮箱获取ID
+	 * @param eamil
+	 * @return
+	 * @throws Exception
+	 */
+	public String getIDByEamil(String eamil) throws Exception;
 }

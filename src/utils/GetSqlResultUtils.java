@@ -19,9 +19,8 @@ public class GetSqlResultUtils {
 	public UserSql getUserSql() throws Exception{
 		SqlSessionFactory fac=new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream(res));
 		fac.getConfiguration().addMapper(UserSql.class);
-		SqlSession session=fac.openSession();
+		SqlSession session=fac.openSession(true);
 		UserSql userSql=session.getMapper(UserSql.class);
 		return userSql;
 	}
-	
 }
