@@ -10,10 +10,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LONERS重置密码</title>
 <!-- <link rel="stylesheet" type="text/css" href="css/normalize.css" /> -->
-<script src="../js/jquery-1.11.3.min.js" type="text/javascript"></script>
-<script src="../js/bootstrap.min.js" type="text/javascript"></script>
-<link href="../css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="../css/default.css">
+<script src="./resources/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+<script src="./resources/js/bootstrap.min.js" type="text/javascript"></script>
+<link href="./resources/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="./resources/css/default.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
 <style type="text/css">
@@ -80,9 +80,7 @@ body {
 			<form class="login-form">
 				<div class="row">
 					<div class="input-field col s12 center">
-						<img src="http://w3lessons.info/logo.png" alt=""
-							class="responsive-img valign profile-image-login">
-						<p class="center login-form-text" style="font-size: 25px;">LONERS</p>
+						<p class="center login-form-text" style="font-size: 50px;">LONERS</p>
 						<div class="htmleaf-links">
 							<a class="htmleaf-icon icon-htmleaf-home-outline" href="#"
 								title="返回主页" target="_blank"><span> 返回主页</span></a> <a
