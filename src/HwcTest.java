@@ -19,6 +19,7 @@ public class HwcTest {
 		String res="configuration/mybatis_conf.xml";
 		SqlSessionFactory fac=new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream(res));
 		fac.getConfiguration().addMapper(UserSql.class);
+		//自动提交
 		SqlSession session = fac.openSession(true);
 		UserSql uo = session.getMapper(UserSql.class);
 		User u = new User();
