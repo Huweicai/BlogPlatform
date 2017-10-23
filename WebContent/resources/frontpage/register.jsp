@@ -7,13 +7,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>CSDM注册</title>
-	<script src="./resources/js/jquery-1.11.3.min.js" type="text/javascript"></script>
-	<script src="./resources/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="./resources/resources/js/jquery.validate.min.js" type="text/javascript"></script>
-	<script src="./resources/js/messages_zh.js" type="text/javascript"></script>
+	<script src="../js/jquery-1.11.3.min.js" type="text/javascript"></script>
+	<script src="../js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../resources/js/jquery.validate.min.js" type="text/javascript"></script>
+	<script src="../js/messages_zh.js" type="text/javascript"></script>
 	<!-- <link rel="stylesheet" type="text/css" href="css/normalize.css" /> -->
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="./resources/css/default.css">
+	<link rel="stylesheet" type="text/css" href="../css/default.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
 	<style type="text/css">
 		body {

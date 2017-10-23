@@ -8,10 +8,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>CSDM找回密码</title>
 		<!-- <link rel="stylesheet" type="text/css" href="css/normalize.css" /> -->
-		<script src="./resources/js/jquery-1.11.3.min.js" type="text/javascript"></script>
-		<script src="./resources/js/bootstrap.min.js" type="text/javascript"></script>
-		<link href="./resources/css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="./resources/css/default.css">
+		<script src="../js/jquery-1.11.3.min.js" type="text/javascript"></script>
+		<script src="../js/bootstrap.min.js" type="text/javascript"></script>
+		<link href="../css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../css/default.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
 		<style type="text/css">
 			html,
