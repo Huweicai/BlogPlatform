@@ -76,7 +76,7 @@ body {
 				$("#newPasswordInfo").addClass("warning");
 				$("#newPasswordInfo").html(newPasswordInfo);
 			}else{
-				//对用户名格式进行校验
+				//对密码格式进行校验
 				var num=0;
 				var number=0;
 				var letter=0;
@@ -105,13 +105,13 @@ body {
 					$("#newPasswordInfo").html(newPasswordInfo);
 					newpasswordFlag=true;
 				}else if(newPassword.length<6){
-					newPasswordInfo="用户名至少 6位";
+					newPasswordInfo="密码至少 6位";
 					$("#newPasswordInfo").html("")
 					
 					$("#newPasswordInfo").addClass("warning");
 					$("#newPasswordInfo").html(newPasswordInfo);			
 				}else if(newPassword.length>16){
-					newPasswordInfo="用户名最多16位";
+					newPasswordInfo="密码最多16位";
 					$("#newPasswordInfo").html("")
 					$("#newPasswordInfo").addClass("warning");
 					$("#newPasswordInfo").html(newPasswordInfo);

@@ -25,8 +25,7 @@ public class UserController {
 	String content = "LONERS 收到了您的重置密码请求。" + enter +
 			"如果要重置密码，请单击下面的链接，或者将其复制并粘贴到浏览器中：\n"+enter
 			+ "如果不想重置密码，请忽略此邮件，您的密码不会改变。如有任何疑问或顾虑，请联系 LONERS团队 获取支持。" +enter
-			+ utils.Const.domain + "/resetPassword?userID=";
-
+			+ utils.Const.domain + "/resetpassword?userID=";
 	// 给指定邮箱发送验证码
 	public void sendKey(String email) throws Exception {
 		int key = (int) (1000000000 * Math.random());
@@ -36,20 +35,34 @@ public class UserController {
 		String userID = userop.getIDByEamil(email);
 		content = "尊敬的用户 "+ userID + ",您好 ！"+ enter +content;
 		randomKeys.put(userID, key);
-		utils.SendMailUtil.sendMail(email, content + userID +"?key=" + key, "重置密码");
+		utils.SendMailUtil.sendMail(email, content + userID +"&key=" + key, "重置密码");
 	}
-	@RequestMapping("/sendEmail")
+	public static void main(String[] args) throws Exception {
+		UserController i = new UserController();
+		i.sendEmail("huweicai@outlook.com");
+	}
+	@RequestMapping("/sendemail")
 	public String sendEmail(@RequestParam("email") String eamil) throws Exception {
 		sendKey(eamil);
 		return "afterSendEmail";
 	}
 	@RequestMapping("/resetpassword")
-	public String setPasswordAgain(@RequestParam("userID") String userID , @RequestParam("key") int key) {
-//		if( randomKeys.get(userID) == key) {
-//			return "resetPassword";
-//		}else {
+	public String setPasswordAgain(HttpServletRequest req) {
+		String userID = req.getParameter("userID");
+		String key = req.getParameter("key");
+//		if( userID==null || key ==null) {
 //			return "resetPasswordFail";
+//		}else if(randomKeys.get(userID) != Integer.valueOf(key)){
+//			return "resetPasswordFail";
+//		}else {
+//			return "resetpassword";
 //		}
-		return "resetPassword";
+		return "resetpassword";
+	}
+	@RequestMapping("/resetpasswordondb")
+	public String resetpasswordOnDB(HttpServletRequest req) {
+		String s= req.getParameter("reNewPassword");
+		System.out.println(s);
+		return "";
 	}
 }

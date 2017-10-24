@@ -228,12 +228,12 @@ body {
 				<div class="row">
 					<div class="input-field col s6 m6 l6">
 						<p class="margin medium-small">
-							<a href="./register">现在注册!</a>
+							<a href="./register.jsp">现在注册!</a>
 						</p>
 					</div>
 					<div class="input-field col s6 m6 l6">
 						<p class="margin right-align medium-small">
-							<a href="./forgetPassword">忘记密码?</a>
+							<a href="./forgetpassword.html">忘记密码?</a>
 						</p>
 					</div>
 			</form>

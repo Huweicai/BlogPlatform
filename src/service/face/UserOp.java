@@ -60,4 +60,8 @@ public interface UserOp {
 	 * @throws Exception 
 	 */
 	public boolean isUserByEmailAndUsername(String username, String eamil) throws Exception;
+	
+	
+	public void resetPassword(String userID ,String password) throws Throwable;
+	
 }

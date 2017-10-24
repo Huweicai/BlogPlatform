@@ -56,17 +56,17 @@ public interface UserSql {
 	 * 修改User
 	 * @param user
 	 */
-	@Update("update user set username=#{username}"
-			+ "set email=#{email},"
-			+ "set password=#{password},"
-			+ "set sex=#{sex},"
-			+ "set birth_year=#{birth_year},"
-			+ "set birth_month=#{birth_month},"
-			+ "set birth_day=#{birth_day},"
-			+ "set self_introduce=#{self_introduce},"
-			+ "set isAdmin=#{isAdmin},"
-			+ "set color=#{color}"
-			+ "where userID=#{userID}")
+	@Update("update user set username=#{username},"
+			+ "email=#{email},"
+			+ "password=#{password},"
+			+ "sex=#{sex},"
+			+ "birth_year=#{birth_year},"
+			+ "birth_month=#{birth_month},"
+			+ "birth_day=#{birth_day},"
+			+ "self_introduce=#{self_introduce},"
+			+ "isAdmin=#{isAdmin},"
+			+ "color=#{color}"
+			+ " where userID=#{userID}")
 	public void updateUser(User user);
 	/**
 	 * 通过用户名和邮箱判断用户是否存在

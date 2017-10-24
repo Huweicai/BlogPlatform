@@ -1,5 +1,9 @@
 package service.impl;
 
+import java.io.IOException;
+
+import com.sun.deploy.uitoolkit.impl.fx.ui.UITextArea;
+
 import dao.face.UserSql;
 import domain.User;
 import service.face.UserOp;
@@ -52,8 +56,14 @@ public class UserOpImpl implements UserOp {
 	}
 
 	@Override
-	public String getIDByEamil(String email) throws Exception {
-		String userID = getUserByEmail(email).getUserID();
+	public String getIDByEamil(String email) {
+		String userID = null;
+		try {
+			userID = getUserByEmail(email).getUserID();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return userID;
 	}
 	/**
@@ -67,6 +77,18 @@ public class UserOpImpl implements UserOp {
 		int isExist = userSql.getNumByUsernameAndEmail(username,eamil);
 		System.out.println(isExist);
 		return isExist > 0 ? true : false;
+	}
+
+	@Override
+	public void resetPassword(String userID, String password) throws Exception  {
+		UserSql userSql = GetSqlResultUtils.getUserSql();
+		User u = userSql.getUserByID(userID);
+		u.setPassword(password);
+		userSql.updateUser(u);
+	}
+	public static void main(String[] args) throws Throwable {
+		UserOp userOp = (UserOp) utils.Const.context.getBean("userop");
+		userOp.resetPassword("0", "1234");
 	}
 
 }
