@@ -25,7 +25,7 @@ public class UserController {
 	String content = "LONERS 收到了您的重置密码请求。" + enter +
 			"如果要重置密码，请单击下面的链接，或者将其复制并粘贴到浏览器中：\n"+enter
 			+ "如果不想重置密码，请忽略此邮件，您的密码不会改变。如有任何疑问或顾虑，请联系 LONERS团队 获取支持。" +enter
-			+ utils.Const.domain + "/resetpassword?userID=";
+			+ utils.Const.domain + "/resetpassword?key=";
 	// 给指定邮箱发送验证码
 	public void sendKey(String email) throws Exception {
 		int key = (int) (1000000000 * Math.random());
@@ -35,7 +35,7 @@ public class UserController {
 		String userID = userop.getIDByEamil(email);
 		content = "尊敬的用户 "+ userID + ",您好 ！"+ enter +content;
 		randomKeys.put(userID, key);
-		utils.SendMailUtil.sendMail(email, content + userID +"&key=" + key, "重置密码");
+		utils.SendMailUtil.sendMail(email, content + key+  "&userID=" + userID, "重置密码");
 	}
 	public static void main(String[] args) throws Exception {
 		UserController i = new UserController();
@@ -50,19 +50,26 @@ public class UserController {
 	public String setPasswordAgain(HttpServletRequest req) {
 		String userID = req.getParameter("userID");
 		String key = req.getParameter("key");
-//		if( userID==null || key ==null) {
-//			return "resetPasswordFail";
-//		}else if(randomKeys.get(userID) != Integer.valueOf(key)){
-//			return "resetPasswordFail";
-//		}else {
-//			return "resetpassword";
-//		}
-		return "resetpassword";
+		if( userID==null || key ==null) {
+			System.out.println("IDorKey为空");
+			return "resetPasswordFail";
+		}else if(randomKeys.get(userID)-Integer.valueOf(key)!=0){
+			System.out.println("userID="+randomKeys.get(userID) + "key="+key);
+			System.out.println((randomKeys.get(userID) - Integer.valueOf(key)));
+			return "resetPasswordFail";
+		}else {
+			return "resetpassword";
+		}
 	}
 	@RequestMapping("/resetpasswordondb")
-	public String resetpasswordOnDB(HttpServletRequest req) {
-		String s= req.getParameter("reNewPassword");
-		System.out.println(s);
-		return "";
+	public String resetpasswordOnDB(HttpServletRequest req) throws Throwable {
+		System.out.println("被调用了！！！");
+		String password= req.getParameter("reNewPassword");
+		String userID= req.getParameter("userID");
+		System.out.println("获取到"+"password="+password+"userID+"+userID);
+		userID=userID.substring(7);
+		UserOp userop = (UserOp) Const.context.getBean("userop");
+		userop.resetPassword(userID, password);
+		return "resetpassword";
 	}
 }

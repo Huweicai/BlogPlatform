@@ -49,13 +49,14 @@ public class SendMailUtil {
         props.setProperty("mail.smtp.host", mailServer);   //  SMTP 服务器地址
         props.setProperty("mail.smtp.auth", "true");  
         Session session = Session.getDefaultInstance(props);
-        session.setDebug(true);
+        session.setDebug(false);
         try (Transport transport = session.getTransport()){
         	//创建邮件
 			MimeMessage mail = createMessage(session, toAccount, content, title);
 			//连接服务器并发送
 	        transport.connect(myMailAccount, myMailPassword);
 	        transport.sendMessage(mail, mail.getAllRecipients());
+	        System.out.println(content);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

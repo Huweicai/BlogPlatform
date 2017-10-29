@@ -10,9 +10,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LONERS重置密码</title>
 <!-- <link rel="stylesheet" type="text/css" href="css/normalize.css" /> -->
-<script src="./resources/js/jquery-1.11.3.min.js" type="text/javascript"></script>
-<script src="./resources/js/bootstrap.min.js" type="text/javascript"></script>
-<link href="./resources/css/bootstrap.min.css" rel="stylesheet">
+<script src="/resources/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+<script src="/resources/js/bootstrap.min.js" type="text/javascript"></script>
+<link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/resources/css/default.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
@@ -150,27 +150,20 @@ body {
 			}else{
 				
 				if(newPassword==reNewPassword&&newpasswordFlag==true){
-				/* var ID=getUrlParam("ID"); */
-					 alert("我已发送");
-					var a=window.location.href;
-					var s=a.indexOf("&");
-					var t=a.substring(s+1);
-					
-				 $.post(
+					$.post(
 							//url地址
-							"${pageContext.request.contextPath}/resetpasswordondb",
-							
+							"$./resetpasswordondb",
 							//data
-							{"reNewPassword":reNewPassword,"userID":t},
+							{"reNewPassword":reNewPassword},
 							function(data){
 								reNewPasswordInfo="";
 								$("#reNewPasswordInfo").html("");
 								$("#reNewPasswordInfo").html(reNewPasswordInfo);
 								$("#reSetPasswordButton").submit();
+								alert("已经发送");
 							},
 							"json"
 							);				
-						
 				}else{
 					reNewPasswordInfo="两次密码不一致";
 					$("#reNewPasswordInfo").html("");
@@ -189,7 +182,7 @@ body {
 <body class="yellow" style="width: 500px;">
 	<div id="login-page" class="row">
 		<div class="col s12 z-depth-6 card-panel">
-			<form class="login-form" action="${pageContext.request.contextPath}/setpasswordagain.jsp" method="post">
+			<form class="login-form" action="$./setpasswordagain.jsp" method="post">
 				<div class="row">
 					<div class="input-field col s12 center">
 						<img src="http://w3lessons.info/logo.png" alt=""
