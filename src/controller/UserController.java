@@ -3,15 +3,19 @@ package controller;
 import java.io.*;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import javax.servlet.http.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import domain.User;
 import service.face.UserOp;
 import utils.Const;
 
@@ -61,6 +65,7 @@ public class UserController {
 			return "resetpassword";
 		}
 	}
+	//在数据库中更新密码
 	@RequestMapping("/resetpasswordondb")
 	public String resetpasswordOnDB(HttpServletRequest req) throws Throwable {
 		System.out.println("被调用了！！！");
@@ -71,5 +76,25 @@ public class UserController {
 		UserOp userop = (UserOp) Const.context.getBean("userop");
 		userop.resetPassword(userID, password);
 		return "resetpassword";
+	}
+	//个人资料
+	@RequestMapping("personalprofile")
+	public String goPersonalProfile() {
+		return "personalprofile";
+	}
+	@RequestMapping("updateprofile")
+	public String updateProfile(HttpServletRequest req) {
+		 ApplicationContext context = new ClassPathXmlApplicationContext("configuration/beans.xml");
+		 UserOp userop =  (UserOp) context.getBean("userop");
+		 User user = userop.getUserByID(req.getParameter("userID"));
+		 user.setUserID(req.getParameter("userID"));
+		 user.setEmail(req.getParameter("email"));
+		 user.setSex(req.getParameter("sex"));
+		 user.setUsername(req.getParameter("username"));
+		 user.setBirth_day(req.getParameter("birthday"));
+		 user.setSelf_introduce(req.getParameter("self_introduce"));
+		 userop.updateUser(user);
+		 System.out.println("更新用户资料："+user);
+		return "personalprofile";
 	}
 }

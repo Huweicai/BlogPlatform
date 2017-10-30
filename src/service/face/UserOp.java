@@ -64,4 +64,7 @@ public interface UserOp {
 	
 	public void resetPassword(String userID ,String password) throws Throwable;
 	
+	public User getUserByID(String userID);
+	
+	public void updateUser(User user);
 }

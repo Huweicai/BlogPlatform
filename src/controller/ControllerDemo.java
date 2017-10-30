@@ -8,6 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import domain.User;
+import service.face.UserOp;
+import service.impl.UserOpImpl;
+
 @Controller
 public class ControllerDemo {
 //	@Autowired
@@ -32,5 +36,10 @@ public class ControllerDemo {
 		mav.addObject("name", "LONERS");
 		mav.setViewName("hello");
 		return mav;
+	}
+	public static void main(String[] args) {
+		UserOp userop =new UserOpImpl();
+		User user=userop.getUserByID("1234");
+		System.out.println(user.getUsername());
 	}
 }

@@ -241,8 +241,6 @@ body {
 	</div>
 	</div>
 
-	<script type="text/javascript"
-		src="http://googleapis.useso.com/js/jquery/1.11.0/jquery.min.js"></script>
 	<script>
 		window.jQuery
 				|| document

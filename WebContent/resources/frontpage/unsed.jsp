@@ -8,11 +8,18 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>CSDM找回密码</title>
 		<!-- <link rel="stylesheet" type="text/css" href="css/normalize.css" /> -->
-		<script src="../js/jquery-1.11.3.min.js" type="text/javascript"></script>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="http://apps.bdimg.com/libs/jquery.cookie/1.4.1/jquery.cookie.js"></script>
 		<script src="../js/bootstrap.min.js" type="text/javascript"></script>
 		<link href="../css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="../css/default.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+		<script type="text/javascript">
+			function setCookie(){
+				$.cookie('userID',"1234",{path: '/' });
+				alert("cookie"+$.cookie('userID'));
+			}
+		</script>
 		<style type="text/css">
 			html,
 			body {
@@ -200,7 +207,6 @@
 			</div>
 		</div>
 
-		<script type="text/javascript" src="http://libs.useso.com/js/jquery/1.11.0/jquery.min.js"></script>
 		<script>
 			window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')
 		</script>

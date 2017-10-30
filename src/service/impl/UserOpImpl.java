@@ -91,4 +91,18 @@ public class UserOpImpl implements UserOp {
 		userOp.resetPassword("0", "1234");
 	}
 
+	@Override
+	public User getUserByID(String userID) {
+		UserSql userSql = GetSqlResultUtils.getUserSql();
+		System.out.println("读取ID:"+userID);
+		return userSql.getUserByID(userID);
+	}
+
+	@Override
+	public void updateUser(User user) {
+		UserSql userSql = GetSqlResultUtils.getUserSql();
+		userSql.updateUser(user);
+		System.out.println("用户"+user.getUserID()+"信息更新成功");
+	}
+
 }

@@ -85,6 +85,6 @@ public class User {
 		this.color = color;
 	}
 	public String toString() {
-		return getUsername();
+		return "userID: "+userID+" usernaem: "+username+" sex: "+sex+" self_introduce: "+self_introduce;
 	}
 }
