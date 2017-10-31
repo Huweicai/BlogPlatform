@@ -85,9 +85,19 @@ public class UserController {
 
 	// 个人资料页面
 	@RequestMapping("personalprofile")
-	public ModelAndView goPersonalProfile() {
+	public ModelAndView goPersonalProfile(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
-		return null;
+		Cookie[] cookies=request.getCookies();
+	  	for(Cookie cookie:cookies){
+	  		//已经登录，存在cookie信息
+	  		if(cookie.getName().compareTo("userID")==0){
+	  			mav.setViewName("personalprofile");
+	  			return mav;
+	  		}
+	  	}
+		mav.addObject("tip", "请先登录");
+		mav.setViewName("tip");
+		return mav;
 	}
 
 	// 更新个人资料

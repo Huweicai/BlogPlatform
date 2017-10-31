@@ -4,12 +4,12 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <!-- 1.5秒之后自动跳转回首页 -->
-  <meta http-equiv="refresh" content="1.5; url=/" />
+  <!-- 2.5秒之后自动跳转回首页 -->
+  <meta http-equiv="refresh" content="2.5; url=./" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="123123.css" type="text/css">
+  <link rel="stylesheet" href="./resources/css/personalprofile.css" type="text/css">
 </head>
 
 <body>
