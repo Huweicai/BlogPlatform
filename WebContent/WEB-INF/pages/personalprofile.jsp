@@ -38,8 +38,10 @@
 		});
 		//点击保存
 		$("#save").click(function() {
+			//允许userID和Email发送但禁止修改
 			document.getElementById("userID").disabled = false;
 			document.getElementById("email").disabled = false;
+			$("input").attr("readonly","readonly");
 			$("#form").submit();
 		});
 	});
@@ -62,7 +64,7 @@
 <body>
 	<nav class="navbar navbar-expand-md bg-light navbar-light">
 		<div class="container">
-			<a class="navbar-brand" href="#"><i
+			<a class="navbar-brand" href="./"><i
 				class="fa d-inline fa-lg fa-cloud"></i><b>&nbsp;LONERS</b></a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
 				data-toggle="collapse" data-target="#navbar2SupportedContent"
@@ -79,8 +81,8 @@
 					<li class="nav-item"><a class="nav-link" href="#"> 文章管理 <br>
 					</a></li>
 				</ul>
-				<a class="btn navbar-btn ml-2 text-white btn-dark"><i
-					class="fa d-inline fa-lg fa-user-circle-o"></i>登录</a>
+				<a class="btn navbar-btn ml-2 text-white btn-dark" href="./logout"><i
+					class="fa d-inline fa-lg fa-user-circle-o"></i>退出</a>
 			</div>
 		</div>
 	</nav>
@@ -124,9 +126,9 @@
 									<label class="text-dark">性别&nbsp;&nbsp;&nbsp;</label> <label
 										class="text-dark">男</label> <input id="sex_boy" name="sex"
 										type="radio" value="boy" disabled="true"
-										<%=new String("boy").equals(user.getSex()) ? "checked" : ""%>> <label
-										class="text-dark">女</label> <input id="sex_girl" name="sex"
-										type="radio" value="girl" disabled="true"
+										<%=new String("boy").equals(user.getSex()) ? "checked" : ""%>>
+									<label class="text-dark">女</label> <input id="sex_girl"
+										name="sex" type="radio" value="girl" disabled="true"
 										<%=new String("girl").equals(user.getSex()) ? "checked" : ""%>>
 								</div>
 								<!--自我介绍-->
@@ -149,7 +151,12 @@
 				</div>
 			</div>
 		</div>
-		
+		<br>
+		<footer class="text-center ">
+			<p class=" m-0">
+				© 2005-2017 <b>LONERS</b> All rights reserved.
+			</p>
+		</footer>
 	</div>
 	<script type="text/javascript">
 		var userID = $("#userID").val();

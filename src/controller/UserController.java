@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -85,19 +86,27 @@ public class UserController {
 
 	// 个人资料页面
 	@RequestMapping("personalprofile")
-	public ModelAndView goPersonalProfile(HttpServletRequest request) {
+	public ModelAndView goPersonalProfile(@CookieValue(value="userID",required=false)String userID) {
 		ModelAndView mav = new ModelAndView();
-		Cookie[] cookies=request.getCookies();
-	  	for(Cookie cookie:cookies){
-	  		//已经登录，存在cookie信息
-	  		if(cookie.getName().compareTo("userID")==0){
-	  			mav.setViewName("personalprofile");
-	  			return mav;
-	  		}
-	  	}
-		mav.addObject("tip", "请先登录");
-		mav.setViewName("tip");
-		return mav;
+		if(userID==null||userID=="") {
+			mav.addObject("tip", "请先登录");
+			mav.setViewName("tip");
+			return mav;
+		}else {
+			mav.setViewName("personalprofile");
+  			return mav;
+		}
+//		Cookie[] cookies=request.getCookies();
+//	  	for(Cookie cookie:cookies){
+//	  		//已经登录，存在cookie信息
+//	  		if(cookie.getName().compareTo("userID")==0){
+//	  			mav.setViewName("personalprofile");
+//	  			return mav;
+//	  		}
+//	  	}
+//		mav.addObject("tip", "请先登录");
+//		mav.setViewName("tip");
+//		return mav;
 	}
 
 	// 更新个人资料
@@ -115,5 +124,25 @@ public class UserController {
 		userop.updateUser(user);
 		System.out.println("更新用户资料：" + user);
 		return "personalprofile";
+	}
+	
+	//退出登录，注销
+	@RequestMapping("/logout")
+	public ModelAndView logout(HttpServletRequest req,HttpServletResponse rsb) {
+		Cookie[] cookies=req.getCookies();
+	  	for(Cookie cookie:cookies){
+	  		//找到userID cookie,毁灭它
+	  		if(cookie.getName().compareTo("userID")==0){
+	  			//立即过期
+	  			cookie.setMaxAge(0);
+	  			cookie.setPath("/");
+	  			rsb.addCookie(cookie);
+	  			System.out.println("已退出登录");
+	  		}
+	  	}
+	  	ModelAndView mav = new ModelAndView();
+	  	mav.addObject("tip", "已退出登录，正在跳转回主页");
+	  	mav.setViewName("tip");
+	  	return mav;
 	}
 }

@@ -7179,9 +7179,16 @@ body>* {
 	background: linear-gradient(to top, #343a40 0%, transparent 100%);
 }
 
-footer {
+.footer1 {
 	width: 100%;
 	height: 100px; /* footer的高度一定要是固定值*/
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+}
+.footer2 {
+	width: 100%;
+	height: 5%; /* footer的高度一定要是固定值*/
 	position: absolute;
 	bottom: 0px;
 	left: 0px;
