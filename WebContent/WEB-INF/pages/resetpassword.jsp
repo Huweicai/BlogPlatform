@@ -151,11 +151,9 @@ body {
 				
 				if(newPassword==reNewPassword&&newpasswordFlag==true){
 				/* var ID=getUrlParam("ID"); */
-					 alert("我已发送");
 					var a=window.location.href;
 					var s=a.indexOf("&");
 					var t=a.substring(s+1);
-					
 				 $.post(
 							//url地址
 							"${pageContext.request.contextPath}/resetpasswordondb",
@@ -169,8 +167,8 @@ body {
 								$("#reSetPasswordButton").submit();
 							},
 							"json"
-							);				
-						
+							);
+					window.location.href="./afterresetpwd";
 				}else{
 					reNewPasswordInfo="两次密码不一致";
 					$("#reNewPasswordInfo").html("");
@@ -192,14 +190,12 @@ body {
 			<form class="login-form" action="${pageContext.request.contextPath}/setpasswordagain.jsp" method="post">
 				<div class="row">
 					<div class="input-field col s12 center">
-						<img src="http://w3lessons.info/logo.png" alt=""
-							class="responsive-img valign profile-image-login">
-						<p class="center login-form-text" style="font-size: 25px;">LONERS</p>
+						<p class="center login-form-text" style="font-size: 50px;">LONERS</p>
 						<div class="htmleaf-links">
 							<a class="htmleaf-icon icon-htmleaf-home-outline" href="#"
-								title="返回主页" target="_blank"><span> 返回主页</span></a> <a
+								title="返回主页" target="./"><span> 返回主页</span></a> <a
 								class="htmleaf-icon icon-htmleaf-arrow-forward-outline" href="#"
-								title="取消找回" target="_blank"><span> 取消找回</span></a>
+								title="取消找回" target="./"><span> 取消找回</span></a>
 						</div>
 					</div>
 				</div>
@@ -207,14 +203,14 @@ body {
 					<div class="input-field col s12">
 						<i class="mdi-action-lock-outline prefix"></i> <input
 							id="newPassword" type="password"> <label for="password">新密码</label>
-						<span id="newPasswordInfo">dsada</span>
+						<span id="newPasswordInfo"></span>
 					</div>
 				</div>
 				<div class="row margin">
 					<div class="input-field col s12">
 						<i class="mdi-action-lock-outline prefix"></i> <input
 							id="reNewPassword" type="password"> <label for="password">确认密码</label>
-						<span id="reNewPasswordInfo">dsadsa</span>
+						<span id="reNewPasswordInfo"></span>
 					</div>
 				</div>
 				<div class="row">
@@ -226,12 +222,12 @@ body {
 				<div class="row">
 					<div class="input-field col s6 m6 l6">
 						<p class="margin medium-small">
-							<a href="register.html">立刻注册!</a>
+							<a href="./resources/frontpage/register.html">立刻注册!</a>
 						</p>
 					</div>
 					<div class="input-field col s6 m6 l6">
 						<p class="margin right-align medium-small">
-							<a href="index.html">登录</a>
+							<a href="./resources/frontpage/login.jsp">登录</a>
 						</p>
 					</div>
 				</div>

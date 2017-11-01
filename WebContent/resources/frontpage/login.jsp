@@ -148,7 +148,6 @@ body {
 						if(isLogin&&isCheckCode){
 							//在跳转之前先写入Cookie
 							$.cookie('userID',$("#username").val(),{path: '/' });
-							alert($.cookie('userID'));
 							$("#loginForm").submit();
 						}
 					},

@@ -6,7 +6,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>CSDM找回密码</title>
+		<title>LONERS找回密码</title>
 		<!-- <link rel="stylesheet" type="text/css" href="css/normalize.css" /> -->
 		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script src="http://apps.bdimg.com/libs/jquery.cookie/1.4.1/jquery.cookie.js"></script>

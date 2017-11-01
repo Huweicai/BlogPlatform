@@ -49,9 +49,12 @@ public class UserController {
 	}
 
 	@RequestMapping("/sendemail")
-	public String sendEmail(@RequestParam("email") String eamil) throws Exception {
+	public ModelAndView sendEmail(@RequestParam("email") String eamil) throws Exception {
 		sendKey(eamil);
-		return "afterSendEmail";
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("tip");
+		mav.addObject("tip","邮件已发送，请注意查收");
+		return mav;
 	}
 
 	// 更改密码页面
