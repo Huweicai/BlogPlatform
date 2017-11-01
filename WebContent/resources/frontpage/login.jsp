@@ -9,7 +9,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CSDM登录</title>
+<title>LONERS登录</title>
 <!-- <link rel="stylesheet" type="text/css" href="css/normalize.css" /> -->
 <script src="../js/jquery-1.11.3.min.js" type="text/javascript"></script>
 <script src="../js/bootstrap.min.js" type="text/javascript"></script>
@@ -19,6 +19,8 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
+	<!-- 百度静态资源JQuery.cookie -->
+<script src="http://apps.bdimg.com/libs/jquery.cookie/1.4.1/jquery.cookie.js"></script>
 <style type="text/css">
 html, body {
 	height: 100%;
@@ -131,7 +133,6 @@ body {
 					function(data){
 						var isLogin=data.isLogin;
 						var isCheckCode=data.isCheckCode;
-					
 						if(isLogin==false){
 							usernameInfo="用户名或密码错误";
 							$("#usernameInfo").html("");
@@ -145,6 +146,9 @@ body {
 							$("#checkImgInfo").html(checkImgInfo);
 						}
 						if(isLogin&&isCheckCode){
+							//在跳转之前先写入Cookie
+							$.cookie('userID',$("#username").val(),{path: '/' });
+							alert($.cookie('userID'));
 							$("#loginForm").submit();
 						}
 					},
@@ -181,7 +185,7 @@ body {
 <body class="red" style="width: 500px;">
 	<div id="login-page" class="row">
 		<div class="col s12 z-depth-6 card-panel">
-			<form id="loginForm" class="login-form" action="${pageContext.request.contextPath}/personFirstPage" method="post">
+			<form id="loginForm" class="login-form" action="${pageContext.request.contextPath}/" method="post">
 				<div class="row">
 					<div class="input-field col s12 center">
 						<p class="center login-form-text" style="font-size: 50px;">LONERS</p>

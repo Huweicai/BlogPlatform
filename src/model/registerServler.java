@@ -52,9 +52,6 @@ public class registerServler extends HttpServlet {
 		private boolean isAdmin;
 		private String color;*/
 		user.setSex(null);
-		user.setBirth_day(null);
-		user.setBirth_month(null);
-		user.setBirth_year(null);
 		user.setColor(null);
 		user.setSelf_introduce(null);
 		UserOp userOp=new UserOpImpl();

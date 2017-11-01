@@ -4,8 +4,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <!-- 2.5秒之后自动跳转回首页 -->
-  <meta http-equiv="refresh" content="2.5; url=./" />
+  <!-- 3秒之后自动跳转回首页 -->
+  <title>提示</title>
+  <meta http-equiv="refresh" content="3; url=./" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
@@ -21,7 +22,7 @@
       <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="#"> 个人主页
+            <a class="nav-link" href="./personalprofile"> 个人资料
               <br> </a>
           </li>
           <li class="nav-item">
@@ -33,7 +34,7 @@
       </div>
     </div>
   </nav>
-  <div class="py-5 border border-light">
+  <div class="py-5 border border-light h-100">
     <div class="container">
       <div class="row text-dark border border-light">
         <div class="col-md-3"> </div>
@@ -46,6 +47,11 @@
         </div>
       </div>
     </div>
+    <footer class="text-center">
+		<p class=" m-0">
+			© 2005-2017 <b>LONERS</b> All rights reserved.
+		</p>
+	</footer>
   </div>
 </body>
 

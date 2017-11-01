@@ -110,7 +110,7 @@ public class UserController {
 		user.setEmail(req.getParameter("email"));
 		user.setSex(req.getParameter("sex"));
 		user.setUsername(req.getParameter("username"));
-		user.setBirth_day(req.getParameter("birthday"));
+		user.setBirthday(req.getParameter("birthday"));
 		user.setSelf_introduce(req.getParameter("self_introduce"));
 		userop.updateUser(user);
 		System.out.println("更新用户资料：" + user);
